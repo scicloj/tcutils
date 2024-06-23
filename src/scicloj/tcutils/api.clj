@@ -1,10 +1,15 @@
 (ns scicloj.tcutils.api
+  ^{:doc "Public interface for tcutils library."
+    :author "Kira McLean"}
   (:require [tech.v3.dataset.rolling :as rolling]
             [tech.v3.datatype.functional :as fun]
+            [tech.v3.datatype.statistics :as stat]
+            [scicloj.tcutils.strings :as strings]
             [tablecloth.api :as tc]))
 
 (defn lag
-  "Compute previous (lagged) values from one column in a new column, used to compare values ahead of the current value.
+  "Compute previous (lagged) values from one column in a new column, can be used e.g. to compare
+    values behind the current value.
 
   ## Usage
 
@@ -13,10 +18,11 @@
 
   ## Arguments
 
-  | ds | A `tech.ml.dataset` (i.e a `tablecloth` dataset) |
-  | new-column-name | __optional__ Name for the column where newly computed values will go. When ommitted new column name defaults to the keyword `<old-column-name>-lag-<lag-size>`|
-  | column-selector | Name of the column to use to compute the lagged values |
-  | lag-size | positive integer indicating how many rows to skip over to compute the lag |
+  - `ds` - A `tech.ml.dataset` (i.e a `tablecloth` dataset)
+  - `new-column-name` - __optional__ Name for the column where newly computed values will go.
+    When ommitted new column name defaults to the keyword `<old-column-name>-lag-<lag-size>`
+  - `column-selector` - Name of the column to use to compute the lagged values
+  - `lag-size` - positive integer indicating how many rows to skip over to compute the lag
 
   ## Returns
 
@@ -37,7 +43,25 @@
                     {new-column-name (rolling/first column-name)})))
 
 (defn lead
-  " "
+  "Compute next (lead) values from one column in a new column, can be used e.g. to compare values ahead of the current value.
+
+  ## Usage
+
+  `lead(ds column-selector lead-size)`
+  `lead(ds new-column-name column-selector lead-size)`
+
+  ## Arguments
+
+  - `ds` - A `tech.ml.dataset` (i.e a `tablecloth` dataset)
+  - `new-column-name` - __optional__ Name for the column where newly computed values will go.
+    When ommitted new column name defaults to the keyword `<old-column-name>-lag-<lag-size>`
+  - `column-selector` - Name of the column to use to compute the lead values
+  - `lead-size` - positive integer indicating how many rows to skip over to compute the lead
+
+  ## Returns
+
+  A dataset with the column populated with the lagged values.
+  "
   ([ds column-name lead-size]
    (let [new-column-name (-> column-name
                              name
@@ -53,7 +77,23 @@
                     {new-column-name (rolling/last column-name)})))
 
 (defn cumsum
-  "Compute the cumulative sum of a column"
+  "Compute the cumulative sum of a column
+
+  ## Usage
+
+  `cumsum(ds column-name)`
+  `cumsum(ds new-column-name column-name)`
+
+  ## Arguments
+
+  - `ds` - A `tech.ml.dataset` (i.e a `tablecloth` dataset)
+  - `new-column-name` - __optional__ Name for the column where newly computed values will go.
+    When ommitted new column name defaults to the keyword `<old-column-name>-cumulative-sum`
+  - `column-selector` - Name of the column to use to compute the cumulative sum
+
+  ## Returns
+
+  A dataset with the additional column containing the cumulative sum."
   ([ds column-name]
    (let [new-column-name (-> column-name
                              name
