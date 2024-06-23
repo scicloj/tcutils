@@ -5,6 +5,7 @@
  {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.4"}
                  slipset/deps-deploy {:mvn/version "0.2.1"}}
           :ns-default build}
+  :dev {:extra-deps {vvvvalvalval/scope-capture {:mvn/version "0.3.3"}}}
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
