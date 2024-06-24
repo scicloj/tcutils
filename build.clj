@@ -4,8 +4,8 @@
             [clojure.tools.build.api :as b]
             [deps-deploy.deps-deploy :as dd]))
 
-(def lib 'net.clojars.scicloj/tcutils)
-(def version "0.1.0-SNAPSHOT")
+(def lib 'org.scicloj/tcutils)
+(def version "0.1.0-alpha-SNAPSHOT")
 #_ ; alternatively, use MAJOR.MINOR.COMMITS:
 (def version (format "1.0.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
@@ -23,6 +23,19 @@
     (when-not (zero? exit) (throw (ex-info "Tests failed" {}))))
   opts)
 
+(defn- pom-template [version]
+  [[:description "tcutils is a library of utility functions for working with tablecloth datasets"]
+   [:url "https://scicloj.github.io/tcutils/"]
+   [:licenses
+    [:license
+     [:name "MIT"]
+     [:url "https://mit-license.org"]]]
+   [:scm
+    [:url "https://github.com/scicloj/tcutils"]
+    [:connection "scm:git:https://github.com/scicloj/tcutils.git"]
+    [:developerConnection "scm:git:ssh:git@github.com:scicloj/tcutils.git"]
+    [:tag (str "v" version)]]])
+
 (defn- jar-opts [opts]
   (assoc opts
          :lib lib :version version
@@ -31,7 +44,8 @@
          :basis (b/create-basis {})
          :class-dir class-dir
          :target "target"
-         :src-dirs ["src"]))
+         :src-dirs ["src"]
+         :pom-data (pom-template version)))
 
 (defn ci "Run the CI pipeline of tests (and build the JAR)." [opts]
   (test opts)
