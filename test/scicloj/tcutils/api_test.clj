@@ -71,3 +71,10 @@
              (-> (tc/dataset {:C1 [1 2 3 4 5]})
                  (sut/cumsum :C1)
                  (tc/columns :as-map)))))))
+
+(deftest clean-column-names
+  (testing "normalizes column names to snake-cased keywords"
+    ;; See `clean-string` test for in-depth examples
+
+
+    ))

@@ -103,5 +103,22 @@
   ([ds new-column-name column-name]
    (rolling/expanding ds {new-column-name (rolling/sum column-name)})))
 
-(defn substract-columns [ds new-column-name col1 col2]
-  (tc/map-columns new-column-name [col1 col2] fun/-))
+(defn clean-column-names
+  "Convert column names of a dataset into ASCII-only, kebab-cased keywords.
+
+  ## Usage
+
+  `clean-column-names(ds)`
+
+  ## Arguments
+
+  - `ds` - A `tech.ml.dataset` (i.e a `tablecloth` dataset)
+
+  ## Returns
+
+  A dataset with the column names converted to kebab-cased keywords."
+  [ds]
+  (tc/rename-columns ds strings/to-clean-keyword))
+
+;; (defn value-counts [ds]
+;;   )
