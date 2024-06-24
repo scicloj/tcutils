@@ -2,8 +2,6 @@
   ^{:doc "Public interface for tcutils library."
     :author "Kira McLean"}
   (:require [tech.v3.dataset.rolling :as rolling]
-            [tech.v3.datatype.functional :as fun]
-            [tech.v3.datatype.statistics :as stat]
             [scicloj.tcutils.strings :as strings]
             [tablecloth.api :as tc]))
 

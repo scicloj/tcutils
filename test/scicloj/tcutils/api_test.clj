@@ -74,7 +74,12 @@
 
 (deftest clean-column-names
   (testing "normalizes column names to snake-cased keywords"
-    ;; See `clean-string` test for in-depth examples
-
-
-    ))
+    ;; See `to-clean-keyword` test for in-depth examples
+    (is (= [:a-test :b-test :c-test]
+           (-> {"A Test" []
+                "bTest" []
+                :C_TEST []}
+               tc/dataset
+               sut/clean-column-names
+               tc/column-names)
+           ))))
