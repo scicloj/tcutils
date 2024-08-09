@@ -13,6 +13,7 @@
   ## Usage
 
   `(lag ds column-name lag-size)`
+
   `(lag ds new-column-name column-name lag-size)`
 
   ## Arguments
@@ -47,19 +48,20 @@
   ## Usage
 
   `(lead ds column-name lead-size)`
+
   `(lead ds new-column-name column-name lead-size)`
 
   ## Arguments
 
   - `ds` - A `tech.ml.dataset` (i.e a `tablecloth` dataset)
   - `new-column-name` - __optional__ Name for the column where newly computed values will go.
-    When ommitted new column name defaults to the keyword `<old-column-name>-lead-<lag-size>`
+    When ommitted new column name defaults to the keyword `<old-column-name>-lead-<lead-size>`
   - `column-name` - Name of the column to use to compute the lead values
   - `lead-size` - positive integer indicating how many rows to skip over to compute the lead
 
   ## Returns
 
-  A dataset with the column populated with the lagged values.
+  A dataset with the column populated with the lead values.
   "
   ([ds column-name lead-size]
    (let [new-column-name (-> column-name
@@ -81,6 +83,7 @@
   ## Usage
 
   `(cumsum ds column-name)`
+
   `(cumsum ds new-column-name column-name)`
 
   ## Arguments
@@ -125,6 +128,7 @@
   ## Usage
 
   `(between ds col-name low high)`
+
   `(between ds col-name low high {:missing-default val})`
 
   ## Arguments
