@@ -43,6 +43,10 @@ Install it locally (requires the `ci` task be run first):
 
     $ clojure -T:build install
 
+Generate the project's documentation website:
+
+    $ clojure -X:codox
+
 ## License
 
 Copyright © 2024 Kira McLean

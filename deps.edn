@@ -13,7 +13,7 @@
    :exec-fn codox.main/-main
    :exec-args {:group-id "scicloj"
                :artifact-id "tcutils"
-               :version "0.1.0-alpha"
+               :version "0.1.0-alpha2"
                :name "tcutils"
                :description "A library of utility functions for working with tablecloth datasets"
                :metadata {:doc/format :markdown}
