@@ -143,7 +143,7 @@
   ([ds col-selector low high {:keys [missing-default]}]
    (tc/select-rows ds #(< low (% col-selector missing-default) high))))
 
-(defn duplicate-rows [ds]
+(defn duplicate-rows
   "Filter a dataset for only duplicated rows.
 
   ## Usage
