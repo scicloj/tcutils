@@ -2,10 +2,9 @@
 
 [![Clojars Project](https://img.shields.io/clojars/v/org.scicloj/tcutils.svg)](https://clojars.org/org.scicloj/tcutils)
 
-Warning: This is highly experimental and subject to change. Use at your own risk.
+A collection of util functions for working with [tablecloth](https://github.com/scicloj/tablecloth) datasets.
 
-A collection of util functions for working with [tablecloth](https://github.com/scicloj/tablecloth)
- datasets.
+This project is still under active development. Please feel free to share feedback or suggestions.
 
 ## Usage
 
@@ -16,12 +15,12 @@ Add the dependency to your `deps.edn` file. The latest version can be [found on 
 ### Import into your project or notebook to use
 
 ```clojure
-(require '[scicloj.tcutils.api :as tcutils])
+(require '[scicloj.tcutils.api :as tcu])
 
 (-> {"Some data" [1 2 3]
      "Some more data" [4 5 6]}
      tc/dataset
-     tcutils/clean-column-names)
+     tcu/clean-column-names)
 
 ```
 

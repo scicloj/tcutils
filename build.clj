@@ -30,11 +30,12 @@
     [:license
      [:name "MIT"]
      [:url "https://mit-license.org"]]]
-   [:scm
-    [:url "https://github.com/scicloj/tcutils"]
-    [:connection "scm:git:https://github.com/scicloj/tcutils.git"]
-    [:developerConnection "scm:git:ssh:git@github.com:scicloj/tcutils.git"]
-    [:tag (str "v" version)]]])
+   ;; [:scm
+   ;;  [:url "https://github.com/scicloj/tcutils"]
+   ;;  [:connection "scm:git:https://github.com/scicloj/tcutils.git"]
+   ;;  [:developerConnection "scm:git:ssh:git@github.com:scicloj/tcutils.git"]
+   ;;  [:tag (str "v" version)]]
+   ])
 
 (defn- jar-opts [opts]
   (assoc opts

@@ -2,7 +2,7 @@
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
         scicloj/tablecloth {:mvn/version "7.029.2"}}
  :aliases
- {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.4"}
+ {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.10.5"}
                  slipset/deps-deploy {:mvn/version "0.2.1"}}
           :ns-default build}
   :codox
@@ -17,8 +17,9 @@
                :name "tcutils"
                :description "A library of utility functions for working with tablecloth datasets"
                :metadata {:doc/format :markdown}
-               :html {:transforms [[:head] [:append [:script {:async true
-                                                              :src "set-up-analytics"}]]]}
+               :html {:transforms [[:head] [:append [:script {:defer true
+                                                              :src "https://cloud.umami.is/script.js"
+                                                              :data-website-id "7f05c81b-38ea-4916-aa00-9d1631cf0681"}]]]}
                :themes [:rdash]
                :source-paths ["src"]
                :output-path "docs"
