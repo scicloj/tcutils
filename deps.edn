@@ -1,6 +1,6 @@
 {:paths ["src" "resources"]
- :deps {org.clojure/clojure {:mvn/version "1.11.1"}
-        scicloj/tablecloth {:mvn/version "7.029.2"}}
+ :deps {org.clojure/clojure {:mvn/version "1.12.4"}
+        scicloj/tablecloth {:mvn/version "8.016"}}
  :aliases
  {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.10.5"}
                  slipset/deps-deploy {:mvn/version "0.2.1"}}
